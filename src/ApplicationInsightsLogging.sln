@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33020.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47CB4999-3A15-4F2F-9437-6D8AAE14E95D}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\.github\README.md = ..\.github\README.md
+		..\umbraco-marketplace.json = ..\umbraco-marketplace.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationInsightsLogging.TestSite", "ApplicationInsightsLogging.TestSite\ApplicationInsightsLogging.TestSite.csproj", "{5EF0F94A-D5B9-4890-86E1-7A101A224285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationInsightsLogging", "ApplicationInsightsLogging\ApplicationInsightsLogging.csproj", "{DB549819-E064-4681-9D3D-87545D72D58C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EF0F94A-D5B9-4890-86E1-7A101A224285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EF0F94A-D5B9-4890-86E1-7A101A224285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EF0F94A-D5B9-4890-86E1-7A101A224285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EF0F94A-D5B9-4890-86E1-7A101A224285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB549819-E064-4681-9D3D-87545D72D58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB549819-E064-4681-9D3D-87545D72D58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB549819-E064-4681-9D3D-87545D72D58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB549819-E064-4681-9D3D-87545D72D58C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F07004F-9903-4AEB-9ED0-BE57A0326D20}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+{
+  "id": "ApplicationInsightsLogging",
+  "name": "ApplicationInsightsLogging",
+  "version": "0.0.0",
+  "allowPackageTelemetry": true,
+  "extensions": [
+    {
+      "name": "Application Insights Logging Bundle",
+      "alias": "ApplicationInsightsLogging.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/ApplicationInsightsLogging/application-insights-logging.js"
+    }
+  ]
+}
