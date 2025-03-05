@@ -4,7 +4,7 @@
 [![NuGet](https://img.shields.io/nuget/vpre/Umbraco.Community.ApplicationInsightsLogging?color=0273B3)](https://www.nuget.org/packages/Umbraco.Community.ApplicationInsightsLogging)
 [![GitHub license](https://img.shields.io/github/license/stevetemple/Umbraco.Community.ApplicationInsightsLogging?color=8AB803)](../LICENSE)
 
-TODO: describe your package
+Fetch data from Application Insights rather than Serilog in the backoffice log viewer
 
 <!--
 Including screenshots is a really good idea! 

@@ -1,4 +1,5 @@
-using ApplicationInsightsLogging.Respository;
+using ApplicationInsightsLogging.Repository;
+using ApplicationInsightsLogging.Settings;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -20,6 +21,9 @@ namespace ApplicationInsightsLogging.Composers
         public void Compose(IUmbracoBuilder builder)
         {
             builder.Services.AddUnique<ILogViewerRepository, ApplicationInsightsLogViewerRepository>();
+            builder.Services
+                .AddOptions<ApplicationInsightsSettings>()
+                .BindConfiguration("ApplicationInsightsLogging");
 
 
             builder.Services.AddSingleton<IOperationIdHandler, CustomOperationHandler>();
