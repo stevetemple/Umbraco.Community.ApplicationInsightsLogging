@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 using ApplicationInsightsLogging.Settings;
 using Azure.Identity;
@@ -44,15 +45,20 @@ public class ApplicationInsightsLogViewerRepository : ILogViewerRepository
     public LogLevelCounts GetLogCount(LogTimePeriod logTimePeriod)
     {
         var logs = GetRemoteLogs(logTimePeriod).Result;
-        var groups = logs.GroupBy(x => x.Level);
+        var groups = logs.GroupBy(x => x.Level).Select(l => new
+        {
+            l.Key,
+            Count = l.Count()
+
+        });
 
         return new LogLevelCounts
         {
-            Debug = groups.Count(x => x.Key == LogLevel.Debug),
-            Information = groups.Count(x => x.Key == LogLevel.Information),
-            Warning = groups.Count(x => x.Key == LogLevel.Warning),
-            Error = groups.Count(x => x.Key == LogLevel.Error),
-            Fatal = groups.Count(x => x.Key == LogLevel.Fatal)
+            Debug = groups.SingleOrDefault(x => x.Key == LogLevel.Debug) == null ? 0 : groups.SingleOrDefault(x => x.Key == LogLevel.Debug).Count,
+            Information = groups.SingleOrDefault(x => x.Key == LogLevel.Information) == null ? 0 : groups.SingleOrDefault(x => x.Key == LogLevel.Information).Count,
+            Warning = groups.SingleOrDefault(x => x.Key == LogLevel.Warning) == null ? 0 : groups.SingleOrDefault(x => x.Key == LogLevel.Warning).Count,
+            Error = groups.SingleOrDefault(x => x.Key == LogLevel.Error) == null ? 0 : groups.SingleOrDefault(x => x.Key == LogLevel.Error).Count,
+            Fatal = groups.SingleOrDefault(x => x.Key == LogLevel.Fatal) == null ? 0 : groups.SingleOrDefault(x => x.Key == LogLevel.Fatal).Count
         };
     }
 
@@ -111,7 +117,7 @@ public class ApplicationInsightsLogViewerRepository : ILogViewerRepository
         }
 
         var client = new LogsQueryClient(new DefaultAzureCredential()); // TODO : proper auth - new ClientSecretCredential(_options.TenantId, _options.ClientId, _options.ClientSecret)); TODO : This isn't getting correct permission
-        var result = await client.QueryWorkspaceAsync(_options.WorkspaceId, aiQuery,
+         var result = await client.QueryWorkspaceAsync(_options.WorkspaceId, aiQuery,
             new QueryTimeRange(logTimePeriod.StartTime, logTimePeriod.EndTime.AddDays(1)));
 
         var table = result.Value.Table;
