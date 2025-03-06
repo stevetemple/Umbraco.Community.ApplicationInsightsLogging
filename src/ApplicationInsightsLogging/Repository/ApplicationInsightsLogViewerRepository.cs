@@ -112,7 +112,7 @@ public class ApplicationInsightsLogViewerRepository : ILogViewerRepository
 
         var client = new LogsQueryClient(new DefaultAzureCredential()); // TODO : proper auth - new ClientSecretCredential(_options.TenantId, _options.ClientId, _options.ClientSecret)); TODO : This isn't getting correct permission
         var result = await client.QueryWorkspaceAsync(_options.WorkspaceId, aiQuery,
-            new QueryTimeRange(logTimePeriod.StartTime, logTimePeriod.EndTime));
+            new QueryTimeRange(logTimePeriod.StartTime, logTimePeriod.EndTime.AddDays(1)));
 
         var table = result.Value.Table;
 
