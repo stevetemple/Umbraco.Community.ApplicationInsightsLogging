@@ -131,8 +131,14 @@ public class ApplicationInsightsLogViewerRepository : ILogViewerRepository
             Properties = Properties(x.GetString("Properties"))
         });
 
-        static IReadOnlyDictionary<string, string?> Properties(string properties) => JsonSerializer.Deserialize<Dictionary<string, string?>>(properties);
-
+        static IReadOnlyDictionary<string, string?> Properties(string properties)
+        {
+            if(properties == null)
+            {
+                return new Dictionary<string, string?>();
+            }
+            return JsonSerializer.Deserialize<Dictionary<string, string?>>(properties);
+        }
 
 
     }
